@@ -20,14 +20,20 @@ model_updated = Model(1, 'b')
 
 ## Creation of database file and schema
 ```python
-storage.create_db('<db_name>')
+Storage.create_db('<db_name>')
 ```
 
 ## Usage of basic commands
 ```python
-storage.add(model)
-storage.get(Model, 'integer_col', 1)
-storage.get_all(Model, {'string_col': 'a', 'integer_col': 1}, '<and/or>')
-storage.delete(model)
-storage.update(model, model_updated)
+Storage.add(model)
+Storage.get(Model, 'integer_col', 1)
+Storage.get_all(Model, {'string_col': 'a', 'integer_col': 1}, '<and/or>')
+Storage.delete(model)
+Storage.update(model, model_updated)
+```
+
+## Or just get regular session
+```python
+with Storage.get_session()() as session:
+  session.query(Model).first()
 ```
