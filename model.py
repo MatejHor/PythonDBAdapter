@@ -1,7 +1,7 @@
 from sqlalchemy import Column, String, Integer
-from storage import BASE
+from storage import Storage
 
-class Model(BASE):
+class Model(Storage.BASE):
     __tablename__ = "model"
 
     integer_col = Column(Integer, primary_key=True)
