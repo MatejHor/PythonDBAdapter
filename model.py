@@ -12,9 +12,7 @@ class Model(Storage.BASE):
         self.string_col = string_col
 
     def print_model(self):
-        return f"Title: {self.title}, Category: {self.category}, " \
-               f"Posted by: {self.posted_by}, Budget: {self.budget}, " \
-               f"FindersFee: {self.findersfee}, Location: {self.location}"
+        return f"IntegerCol: {self.integer_col}, StringCol: {self.string_col}"
     
     def __str__(self):
         return self.print_model()
