@@ -27,7 +27,7 @@ storage.create_db('<db_name>')
 ```python
 storage.add(model)
 storage.get(Model, 'integer_col', 1)
-storage.get_all(Model)
+storage.get_all(Model, {'string_col': 'a', 'integer_col': 1}, '<and/or>')
 storage.delete(model)
 storage.update(model, model_updated)
 ```
