@@ -1,5 +1,6 @@
 from sqlalchemy.orm import declarative_base, sessionmaker
 from sqlalchemy import create_engine
+import sqlalchemy
 
 import sqlite3
 import os
@@ -31,15 +32,17 @@ class Storage():
         return SESSION
 
     @staticmethod
-    def get_list(obj):
+    def get_list(obj, filters, condition='and'):
+        condition = sqlalchemy.and_ if condition == 'and' else sqlalchemy.or_
+        query_filters = [getattr(obj, key) == value for key, value in filters.items()]
         with Storage.get_session()() as session:
-            return session.query(obj)
+            return session.query(obj).filter(condition(*query_filters)).all()
     
     @staticmethod
     def get(obj, key, value):
         column = getattr(obj, key)
         with Storage.get_session()() as session:
-            return session.get_session().query(obj).filter(column == value).first()
+            return session.query(obj).filter(column == value).first()
     
     @staticmethod
     def add(item):
