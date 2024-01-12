@@ -1,5 +1,5 @@
 # PythonDBAdapter
-An example of a database manipulation adapter
+An example application that shows how to easily use ORM in Python using the SQLAlchemy library
 
 # Instalation
 ```shell
